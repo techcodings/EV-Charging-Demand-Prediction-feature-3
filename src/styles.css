@@ -1,0 +1,213 @@
+/* ⚡ ENERGYVERSE GREEN-YELLOW FUTURISTIC THEME */
+
+:root {
+  --bg: #010a04;
+  --panel-bg: rgba(8, 25, 8, 0.6);
+  --border: rgba(175, 255, 90, 0.35);
+  --accent: #d9ff3f;
+  --accent2: #7bff45;
+  --text: #eaffd6;
+  --muted: #9de88f;
+  --danger: #ff7272;
+  --glow: rgba(200, 255, 80, 0.5);
+}
+
+/* Global */
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: radial-gradient(circle at top, #003805, #000900);
+  font-family: 'Inter', sans-serif;
+  color: var(--text);
+}
+
+/* Page Layout */
+.container {
+  display: grid;
+  grid-template-columns: 360px 1fr;
+  gap: 18px;
+  padding: 16px;
+  min-height: 100vh;
+}
+
+/* Card Panel */
+.card {
+  background: var(--panel-bg);
+  border: 1px solid var(--border);
+  padding: 18px;
+  border-radius: 18px;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 12px 28px rgba(0,255,80,0.1);
+  animation: fadeIn 0.6s ease;
+}
+
+.card h2 {
+  margin: 0 0 12px;
+  color: var(--accent);
+  text-shadow: 0 0 10px var(--glow);
+}
+
+/* Input Grid */
+.input-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+label {
+  font-size: 12px;
+  color: var(--muted);
+  margin-bottom: 4px;
+  display: block;
+}
+
+input, select, textarea {
+  width: 100%;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: rgba(5, 18, 5, 0.8);
+  color: var(--text);
+  font-size: 14px;
+  transition: 0.22s;
+}
+
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 12px var(--glow);
+  transform: scale(1.03);
+}
+
+/* Buttons */
+button {
+  width: 100%;
+  padding: 10px;
+  border-radius: 10px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+button.primary {
+  background: linear-gradient(90deg, var(--accent), var(--accent2));
+  border: none;
+  color: #001500;
+  box-shadow: 0 0 12px var(--glow);
+}
+
+button.primary:hover {
+  background: var(--accent2);
+  box-shadow: 0 0 18px var(--glow);
+  transform: translateY(-2px);
+}
+
+button.secondary {
+  background: rgba(8,20,8,0.6);
+  border: 1px solid var(--border);
+  color: var(--accent);
+}
+
+button.secondary:hover {
+  background: rgba(25,60,25,0.6);
+  transform: translateY(-2px);
+}
+
+/* Right Side View */
+.grid {
+  height: calc(100vh - 32px);
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  gap: 12px;
+}
+
+/* Canvas */
+canvas {
+  width: 100%;
+  height: 100%;
+  border-radius: 14px;
+  background: rgba(3,12,3,0.9);
+  border: 1px solid var(--border);
+  box-shadow: 0 0 14px rgba(0,255,80,0.15);
+}
+
+/* KPI Boxes */
+.kpi {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.kpi .metric {
+  background: rgba(8,20,8,0.6);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 12px;
+  text-align: center;
+  backdrop-filter: blur(6px);
+}
+
+.metric .val {
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--accent);
+  text-shadow: 0 0 10px var(--glow);
+}
+
+.metric .label {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+/* Legend */
+.legend-bar {
+  height: 10px;
+  flex: 1;
+  border-radius: 6px;
+  background: linear-gradient(90deg, #004400, #22ff22, #e8ff3d, #ffaa00, #ff3c00);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity:0; transform:translateY(8px); }
+  to { opacity:1; }
+}
+
+/* Mobile */
+/* Mobile Responsive — KEEP 2 input fields even on small screens */
+@media(max-width:900px) {
+  .container {
+    grid-template-columns: 1fr;
+    padding: 12px;
+  }
+
+  .card {
+    width: 100%;
+  }
+
+  .input-row {
+    grid-template-columns: 1fr 1fr; /* ✅ keep 2 side-by-side */
+    gap: 8px;
+  }
+
+  input, select, textarea {
+    padding: 9px;
+    font-size: 13px;
+  }
+
+  button {
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  .kpi {
+    grid-template-columns: 1fr; /* ✅ KPIs vertically stacked only */
+    gap: 10px;
+  }
+
+  .metric .val {
+    font-size: 20px;
+  }
+}
+
