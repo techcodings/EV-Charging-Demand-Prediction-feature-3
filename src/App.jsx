@@ -93,11 +93,45 @@ export default function App() {
     <div className="container">
       <ControlPanel values={values} setValues={setValues} onPredict={onPredict} onScenario={onScenario} busy={busy} summary={summary} onSpeak={onSpeak} />
       <div className="card grid">
-        <div className="flex">
-          <h2 style={{marginRight:8}}>EV Charging Demand Prediction</h2>
-          <span className="badge">Heatmap</span>
-          <span className="badge">Stations: {stations.length}</span>
-        </div>
+        <div
+  className="flex"
+  style={{
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    width: '100%',
+    marginBottom: '8px',
+  }}
+>
+  {/* 🔹 Left section: title and badges */}
+  <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+    <h2 style={{ margin: 0 }}>EV Charging Demand Prediction</h2>
+    <span className="badge">Heatmap</span>
+    <span className="badge">Stations: {stations.length}</span>
+  </div>
+
+  {/* 🔹 Right section: Back button */}
+  <a
+    href="https://energy-verse-portal.netlify.app/"
+    className="btn-back"
+    style={{
+      background: 'linear-gradient(90deg, #caff37, #84ff4b)',
+      color: '#000',
+      padding: '6px 14px',
+      borderRadius: '8px',
+      fontWeight: '600',
+      textDecoration: 'none',
+      boxShadow: '0 0 12px rgba(186,255,55,0.7)',
+      transition: 'all 0.3s ease',
+      marginLeft: 'auto',
+    }}
+    onMouseEnter={e => (e.currentTarget.style.boxShadow = '0 0 18px rgba(186,255,55,1)')}
+    onMouseLeave={e => (e.currentTarget.style.boxShadow = '0 0 12px rgba(186,255,55,0.7)')}
+  >
+    ← Back to Home
+  </a>
+</div>
+
 
         <HeatmapCanvas
           center={{ lat: Number(values.lat), lng: Number(values.lng) }}
