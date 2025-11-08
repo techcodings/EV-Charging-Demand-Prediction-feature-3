@@ -109,10 +109,14 @@ export default function App() {
           gap:12 
         }}
       >
-        <div style={{display:'flex', alignItems:'center', gap:12}}>
-          <h1>EV Charging Demand Prediction</h1>
-          <span className="muted">AI-based Heatmap & Forecast</span>
-        </div>
+        <div className="flex" style={{ justifyContent: 'space-between', alignItems: 'center' }}>
+  <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+    <h2>EV Charging Demand Prediction</h2>
+    <span className="badge">Heatmap</span>
+    <span className="badge">Stations: {stations.length}</span>
+  </div>
+</div>
+
 
         {/* ✅ Back to Home button */}
         <a
