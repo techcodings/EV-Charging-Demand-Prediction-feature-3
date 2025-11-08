@@ -20,6 +20,47 @@ body {
   font-family: 'Inter', sans-serif;
   color: var(--text);
 }
+/* ===============================
+   EV Charging Demand Prediction Layout Fix
+   =============================== */
+.container {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  justify-content: space-between;
+}
+
+/* Left panel (Controls) */
+.container > :first-child {
+  flex: 0 0 350px;
+  min-width: 320px;
+}
+
+/* Right panel (Heatmap section) */
+.container > .card.grid {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+/* Align header and stats correctly */
+.card.grid .flex {
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+/* Proper spacing for title and badges */
+.card.grid h2 {
+  margin: 0;
+  padding-right: 12px;
+  white-space: nowrap;
+}
+
+.card.grid .badge {
+  margin-left: 6px;
+}
 
 /* Page Layout */
 .container {
