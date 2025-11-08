@@ -39,12 +39,20 @@ export default function App() {
         grid_size: Number(values.grid_size),
         timerange: { start: values.start, end: values.end },
         history_csv_url: values.history_csv_url || '',
-        weights: { weather: Number(values.w_weather), station_access: Number(values.w_access), trend: Number(values.w_trend) }
+        weights: { 
+          weather: Number(values.w_weather), 
+          station_access: Number(values.w_access), 
+          trend: Number(values.w_trend) 
+        }
       };
       const res = await api.predict(payload);
       setHeatmap(res.heatmap);
       setSummary(res.summary);
-      setKpi({ peak: res.peak_load_kw, stations: res.inputs.counts.stations, hours: res.inputs.counts.weather_hours });
+      setKpi({ 
+        peak: res.peak_load_kw, 
+        stations: res.inputs.counts.stations, 
+        hours: res.inputs.counts.weather_hours 
+      });
     } catch (e) {
       alert('Prediction error: ' + e);
     } finally {
@@ -91,7 +99,52 @@ export default function App() {
 
   return (
     <div className="container">
-      <ControlPanel values={values} setValues={setValues} onPredict={onPredict} onScenario={onScenario} busy={busy} summary={summary} onSpeak={onSpeak} />
+      {/* 🔹 Header with Back to Home button */}
+      <header 
+        className="mb-12" 
+        style={{ 
+          display:'flex', 
+          justifyContent:'space-between', 
+          alignItems:'center', 
+          gap:12 
+        }}
+      >
+        <div style={{display:'flex', alignItems:'center', gap:12}}>
+          <h1>EV Charging Demand Prediction</h1>
+          <span className="muted">AI-based Heatmap & Forecast</span>
+        </div>
+
+        {/* ✅ Back to Home button */}
+        <a
+          href="https://energy-verse-portal.netlify.app/?feature=3"
+          className="btn-back"
+          style={{
+            background:'#caff37',
+            color:'#000',
+            padding:'6px 14px',
+            borderRadius:'8px',
+            fontWeight:'600',
+            textDecoration:'none',
+            boxShadow:'0 0 10px rgba(186,255,55,0.6)',
+            transition:'0.3s',
+          }}
+          onMouseEnter={e => e.currentTarget.style.boxShadow = '0 0 16px rgba(186,255,55,0.9)'}
+          onMouseLeave={e => e.currentTarget.style.boxShadow = '0 0 10px rgba(186,255,55,0.6)'}
+        >
+          ← Back to Home
+        </a>
+      </header>
+
+      <ControlPanel 
+        values={values} 
+        setValues={setValues} 
+        onPredict={onPredict} 
+        onScenario={onScenario} 
+        busy={busy} 
+        summary={summary} 
+        onSpeak={onSpeak} 
+      />
+
       <div className="card grid">
         <div className="flex">
           <h2 style={{marginRight:8}}>EV Charging Demand Prediction</h2>
