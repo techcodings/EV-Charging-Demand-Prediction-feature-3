@@ -131,5 +131,3 @@ export default function App() {
     </div>
   )
 }
-
-fior this feature 3 make the button name herafter Back to Home
