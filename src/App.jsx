@@ -112,7 +112,7 @@ export default function App() {
 
   {/* 🔹 Right section: Back button */}
   <a
-    href="https://energy-verse-portal.netlify.app/"
+    href="https://energy-verse-portal.netlify.app/?feature=3"
     className="btn-back"
     style={{
       background: 'linear-gradient(90deg, #caff37, #84ff4b)',
